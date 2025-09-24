@@ -1,0 +1,43 @@
+#ifndef __TOKEN_TYPES__
+#define __TOKEN_TYPES__
+#define KEYWORD 1
+
+enum {
+	INT = 100,
+	FLOAT,
+	VOID,
+
+	IF,
+	ELSE,
+	WHILE,
+	FOR,
+	RETURN,
+
+	ID,
+
+	NUMBER,
+
+	ASSIGN,
+	EQUAL,
+	NEQUAL,
+	LT,
+	GT,
+	LEQUAL,
+	GEQUAL,
+	PLUS,
+	MINUS,
+	MUL,
+	DIV,
+	
+	SEMICOLON,
+	COMMA,
+	LPAREN,
+	RPAREN,
+	LBRACE,
+	RBRACE,
+
+	ERROR,
+};
+
+
+#endif

@@ -1,0 +1,51 @@
+%{
+#include <stdio.h>
+#include "token_types.h"
+
+int num_lines = 0;
+
+%}
+letter          [A-Za-z]
+digit           [0-9]
+ws              [ \t]+
+newline         "\n"
+comment			
+
+error            .
+
+%%
+
+{ws}            { ;   /* do nothing with whitespace */ }
+{newline}       { ++num_lines;  }
+
+// comment
+"//".*			{ /* do nothing with comment */  }
+
+// keywords
+"int"			{ return INT; }
+"float"			{ return FLOAT; }
+"void"			{ return VOID; }
+"if"			{ return IF; }
+"else"			{ return ELSE; }
+"while"			{ return WHILE; }
+"for"			{ return FOR; }
+"return"		{ return RETURN; }
+
+// Identifiers
+[a-zA-Z_][a-zA-Z0-9_]*	{ return ID; }
+
+// Operators
+"="				{ return ASSIGN; }
+"=="			{ return EQUAL; }
+"!="			{ return NEQUAL; }
+"<"				{ return LT; }
+">"				{ return GT; }
+"<="			{ return LEQUAL; }
+">="			{ return GEQUAL; }
+"+"				{ return PLUS; }
+"-"				{ return MINUS; }
+"+"				{ return MUL; }
+
+{error}         { return ERROR; }
+
+%%
